@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>财务系统</title>
+    <link rel="stylesheet" href="./css/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="./css/global.css" charset="utf-8">
+    <link rel="stylesheet" href="./css/index.css" charset="utf-8">
+    <script src="./js/jquery.js" charset="utf-8"></script>
+    <script src="./js/utils.js" charset="utf-8"></script>
+    <script src="https://cdn.bootcss.com/jquery-color/2.1.2/jquery.color.js"></script>
+    <script type="text/javascript" src="./My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="./js/notification.js"></script>
+    <style type="text/css">
+      input[type=text],select{  width: 120px;border-radius:none;}
+      .searchbox{ position: relative; }
+      .search_btn{ position: absolute;right: 20px;top: 0;}
+      .row{ margin-bottom: 8px;text-align: left;overflow: hidden;}
+      .row label{ width: 100px;text-align: right;margin-right: 8px; }
+      .rowBox{ float: left;margin-right: 40px;}
+      .rowBox input{ width: 60px;}
+      .timebox input{ font-size: 14px;width: 120px;}
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="headbox">
+        <header>
+          <div class="container">
+            <h1>财务管理系统</h1>
+          </div>
+          <div class="loading-head"></div>
+        </header>
+      </div>
+
+      <div class="bodybox">
+        <div class="container" style="height:auto;">
+          <div class="searchbox">
+            <div style="overflow:hidden;" class="search_btn">
+              <div class="search_options" style="width:60px;float:left;">
+                <button type="button" name="button" id="submit" class="sm_button" style="width:100%;">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+              <span class="extendTerm sm_button" id="extendSearch" style="width:60px;color:#409eff;background-color:#ecf5ff;border-color:#b3d8ff;">
+                <i class="fa fa-plus"></i>
+              </span>
+            </div>
+
+            <div class="row">
+              <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">项目相关:</label>
+                <input type="text" placeholder="项目名称" id="project_name">
+                <select id="project_type">
+                  <option selected="true" value="0">项目类型</option>
+                  <option>预评</option>
+                  <option>控评</option>
+                  <option>专篇</option>
+                  <option>检测</option>
+                  <option>现评</option>
+                </select>
+                <input type="text" id="report_code" placeholder="报告编号"/>
+                <input type="text" id="contract_code" placeholder="合同编号"/>
+
+            </div>
+            <div class="extend_Search" style="display:none;">
+              <div class="row">
+                <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">票据:</label>
+                <select id="paper_char">
+                  <option selected="true" value="0">票据性质</option>
+                  <option>1</option>
+                  <option>2</option>
+                </select>
+                <input type="text" placeholder="票据编号" id="paper_code"/>
+              </div>
+
+              <div class="row">
+                <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">相关人员:</label>
+                <input type="text" placeholder="签约人" id="contractor_name"/>
+                <input type="text" placeholder="评价编写人员" id="eva_write_name"/>
+                <input type="text" placeholder="业务员" id="sales_name"/>
+              </div>
+
+              <div class="row">
+                <div class="rowBox">
+                  <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">应收款:</label>
+                  <input type="text" id="accounts_rece1"/>
+                  <span>-</span>
+                  <input type="text" id="accounts_rece2"/>
+                </div>
+                <div class="rowBox">
+                  <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">合同金额:</label>
+                  <input type="text" id="contract_money1"/>
+                  <span>-</span>
+                  <input type="text" id="contract_money2"/>
+                </div>
+                <div class="rowBox">
+                  <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">首付金额:</label>
+                  <input type="text" id="pay_1st_money1"/>
+                  <span>-</span>
+                  <input type="text" id="pay_1st_money2"/>
+                </div>
+                <div class="rowBox">
+                  <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">二次付款:</label>
+                  <input type="text" id="pay_2nd_money1"/>
+                  <span>-</span>
+                  <input type="text" id="pay_2nd_money2"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="rowBox">
+                  <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">尾款金额:</label>
+                  <input type="text" id="pay_3rd_money1"/>
+                  <span>-</span>
+                  <input type="text" id="pay_3rd_money2"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="rowBox">
+                  <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">报告出具时间:</label>
+                  <input type="text" id="report_time1" onclick="WdatePicker({skin:'blue',dateFmt:'yyyyMMdd',minDate:'1900-03-08',maxDate:'2088-03-10'})"/>
+                  <span>-</span>
+                  <input type="text" id="report_time2" onclick="WdatePicker({skin:'blue',dateFmt:'yyyyMMdd',minDate:'1900-03-08',maxDate:'2088-03-10'})"/>
+                </div>
+                <div class="rowBox">
+                  <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">首付时间:</label>
+                  <input type="text" id="pay_1st_time1" onclick="WdatePicker({skin:'blue',dateFmt:'yyyyMMdd',minDate:'1900-03-08',maxDate:'2088-03-10'})"/>
+                  <span>-</span>
+                  <input type="text" id="pay_1st_time2" onclick="WdatePicker({skin:'blue',dateFmt:'yyyyMMdd',minDate:'1900-03-08',maxDate:'2088-03-10'})"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="rowBox">
+                  <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">二次收款时间:</label>
+                  <input type="text" id="pay_2nd_time1" onclick="WdatePicker({skin:'blue',dateFmt:'yyyyMMdd',minDate:'1900-03-08',maxDate:'2088-03-10'})"/>
+                  <span>-</span>
+                  <input type="text" id="pay_2nd_time2" onclick="WdatePicker({skin:'blue',dateFmt:'yyyyMMdd',minDate:'1900-03-08',maxDate:'2088-03-10'})"/>
+                </div>
+
+                <div class="rowBox">
+                  <label style="display:block;height:26px;line-height:26px;float:left;font-weight:normal;" for="">尾款时间:</label>
+                  <input type="text" id="pay_3rd_time1" onclick="WdatePicker({skin:'blue',dateFmt:'yyyyMMdd',minDate:'1900-03-08',maxDate:'2088-03-10'})"/>
+                  <span>-</span>
+                  <input type="text" id="pay_3rd_time2" onclick="WdatePicker({skin:'blue',dateFmt:'yyyyMMdd',minDate:'1900-03-08',maxDate:'2088-03-10'})"/>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="container" style="height: auto;padding:20px 10px;border:none;">
+		  <p style="text-align: left;margin-bottom: 10px;">当前已检索到<i id="listNum" style="color: #ff0000;">0</i>条信息</p>
+          <table class="table" width="100%" border="0" cellpadding="0" cellspacing="0">
+            <thead>
+              <th>序号</th>
+              <th>项目名称</th>
+              <th>项目类型</th>
+              <th>合同编号</th>
+              <th>报告编号</th>
+              <th>业务员</th>
+              <th>操作</th>
+            </thead>
+            <tbody  id="tbody">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <script type="text/javascript" src="./js/common.js"></script>
+  <script type="text/javascript">
+  $(function(){
+    $(document).ready(()=>{
+      $("#tbody").append(`
+        <tr>
+          <td colspan="7" style="color:red;">暂无数据</td>
+        </tr>
+        `)
+		$.ajax({
+			url:"http://127.0.0.1:5000/emit?func=goquery",
+			dataType:"json",
+			success(res){
+				console.log(res);
+				appendData(res);	
+			},
+			error(err){
+				console.log(err)
+			}
+		})
+    })
+
+    $("#submit").click(()=>{
+      let postData = {};
+      let inputArr = $("input");
+      let selectArr = $("select");
+      selectArr.map(v=>{
+        let selectId = selectArr.eq(v).attr("id");
+        if($("#"+selectId).val() != "0"){
+          postData[selectId] = $("#"+selectId).val();
+        }
+      })
+      inputArr.map(v=>{
+        let inputId = inputArr.eq(v).attr("id");
+        if(inputArr.eq(v).val() != ""){
+          postData[inputId] = inputArr.eq(v).val();
+        }
+      })
+      $.ajax({
+        url:'http://127.0.0.1:5000/emit?func=goquery',//地址
+        dataType:'text',//数据类型
+        type:'GET',//类型
+        data:postData,
+        dataType:"json",
+        //请求成功
+        success:function(data,status){
+          appendData(data);
+        },
+        //失败/超时
+        error:function(err){
+          console.log(err);
+          alert("请求失败，请稍后再试");
+        }
+      })
+    })
+    //扩展搜索
+    $("#extendSearch").click(()=>{
+      $(".extend_Search").slideToggle();
+    })
+
+    //清空tbody
+    function tbodyClear(){
+      $("#tbody").html("");
+    }
+
+    //添加数据到页面
+    function appendData(data){
+      tbodyClear();
+	  $("#listNum").text(data.length);
+      if(data.length != 0){
+        let tbodyStr;
+        data.forEach((i,v)=>{
+          tbodyStr += `
+            <tr>
+              <td>${v+1}</td>
+              <td>${i.project_name}</td>
+              <td>${i.project_type}</td>
+              <td>${i.contract_code}</td>
+              <td>${i.report_code}</td>
+              <td>${i.sales_name}</td>
+              <td>
+                <a href="detail.html?id=${i.ID}">查看详情</a>
+              </td>
+
+            </tr>
+          `;
+        })
+        $("#tbody").append(tbodyStr);//添加
+      }else{
+        $("#tbody").append(`
+          <tr>
+            <td colspan="4">暂无数据</td>
+          </tr>
+          `)
+      }
+    }
+  })
+
+  </script>
+</html>

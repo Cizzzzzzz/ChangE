@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>财务系统</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/font-awesome-4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="./css/global.css" charset="utf-8">
+  <link rel="stylesheet" href="./css/index.css" charset="utf-8">
+  <script src="./js/jquery.js" charset="utf-8"></script>
+  <script src="./js/utils.js" charset="utf-8"></script>
+  <script src="https://cdn.bootcss.com/jquery-color/2.1.2/jquery.color.js"></script>
+  <script type="text/javascript" src="./My97DatePicker/WdatePicker.js"></script>
+  <script type="text/javascript" src="./js/notification.js"></script>
+  <style type="text/css">
+    input[type=text],
+    select {
+      width: 100%;
+      border-radius: none;
+    }
+
+    label {
+      text-align: right;
+      font-weight: normal;
+      height: 26px;
+    }
+
+    .form-group {
+      overflow: hidden;
+    }
+    .sm_button{width: auto;padding: 10px 16px;line-height: 0;font-size: 16px;}
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <div class="headbox">
+      <header>
+        <div class="container">
+          <h1>财务管理系统</h1>
+        </div>
+        <div class="loading-head"></div>
+      </header>
+    </div>
+
+    <div class="bodybox">
+      <div class="container" style="height:auto;border: none;">
+        <div class="page" style="margin-top:20px;">
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">项目名称:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="project_name" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">项目类型：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="project_type" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">签约人:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="contractor_name" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">合同编号：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="contract_code" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">报告编号:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="report_code" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">报告出具时间：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="report_time" onclick="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd',minDate:'1900-03-08',maxDate:'2088-03-10'})" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">合同金额:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="contract_money" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">首付金额：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="pay_1st_money" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">首付时间:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="pay_1st_time"  onclick="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd',minDate:'1900-03-08',maxDate:'2088-03-10'})" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">首付备注：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="pay_1st_note" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">第二次收款金额:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="pay_2nd_money" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">第二次收款时间：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="pay_2nd_time" onclick="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd',minDate:'1900-03-08',maxDate:'2088-03-10'})" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">第二次收款备注:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="pay_2nd_note" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">尾款金额：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="pay_3rd_money" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">尾款时间:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="pay_3rd_time" onclick="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd',minDate:'1900-03-08',maxDate:'2088-03-10'})" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">尾款备注：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="pay_3rd_note" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">应收款:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="accounts_rece" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">票据性质：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="paper_char" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">票据编号:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="paper_code" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">评价编写人员：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="eva_write_name" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">业务员:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="sales_name" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">业务部提成（包干费）：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="sales_commission" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">技术部提成（评价部提成）:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="tech_commission" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">第一次技术部提成：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="tech_1st_money" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;"> 第一次技术部提成时间:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="tech_1st_time" onclick="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd',minDate:'1900-03-08',maxDate:'2088-03-10'})" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">第二次技术部提成：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="tech_2nd_money" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">第二次技术部提成时间:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="tech_2nd_time" onclick="WdatePicker({skin:'blue',dateFmt:'yyyy-MM-dd',minDate:'1900-03-08',maxDate:'2088-03-10'})" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">专家评审费：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="review_fee" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">检测费（检测部提成）:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="dete_commission" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">实验室提成：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="lab_commission" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">业务发展费:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="business_fee" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">其他：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="other" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">代理费:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="agency_fee" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">合同金额是否包含评审费：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="include_review" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">业务分类:</label>
+                <div class="col-md-7">
+				  <select id="business_class">
+				  	<option value ="1" selected="selected">检测</option>
+					<option value ="2">评价</option>
+				  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">评价类别：</label>
+                <div class="col-md-7">
+				  <select name="" id="eva_class">
+				  	<option value="1">预评</option>
+					<option value="2">控评</option>
+					<option value="3">现评</option>
+					<option value="4">专篇</option>
+				  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">备注:</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="note" placeholder="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">接害岗位数量：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="job_number"  placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">地区系数:</label>
+                <div class="col-md-7">
+				  <select name="" id="region_coefficient">
+				  	<option value="1">是</option>
+					<option value="0">否</option>
+				  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">涉及行业类型：</label>
+                <div class="col-md-7">
+				  <select name="" id="industry_type_num">
+				  	<option value="1">一个</option>
+					<option value="2">两个</option>
+					<option value="3">三个</option>
+					<option value="4">四个及以上</option>
+				  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">行业类型（技术）:</label>
+                <div class="col-md-7">
+				  <select name="" id="industry_type_tech">
+				  	<option value="1">700</option>
+					<option value="2">1100</option>
+					<option value="3">1200</option>
+					<option value="4">1300</option>
+					<option value="5">1500</option>
+					<option value="6">1700</option>
+					<option value="7">1800</option>
+					<option value="8">2000</option>
+				  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname" class="col-md-5 control-label">检测样品数：</label>
+                <div class="col-md-7">
+                  <input type="text" class="form-control" id="dete_num"  placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+		  <div class="row">
+			<div class="col-md-6">
+			  <div class="form-group">
+			    <label for="firstname" class="col-md-5 control-label" style="padding-right: 0;">行业系数（检测及实验）:</label>
+			    <div class="col-md-7">
+				  <select name="" id="industry_type_dete">
+					  <option value="1">1</option>
+					  <option value="2">2</option>
+				  </select>
+			    </div>
+			  </div>
+			</div>
+		  </div>
+
+          <div class="row">
+            <button type="button" id="submit" class="sm_button" name="button">提交</button>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript">
+  $(function() {
+
+    $(document).ready(() => {
+      let id = getSearchString("id", search); //获取页面参数
+      $.ajax({
+        url: "http://127.0.0.1:5000/emit?func=goquery",
+        data: {
+          ID: id
+        },
+        dataType: "json",
+        success(res) {
+          appendData(res);
+        }
+      })
+    })
+
+    function appendData(data) {
+      let resData = data[0];
+      for(k in resData){
+		if(k != "ID"){
+			if($("#"+k).prop("tagName") == "INPUT"){
+				$("#"+k).val(resData[k])
+			}else{
+				let optionsArr = $("#"+k).find("option").removeAttr("selected");
+				optionsArr.map(v=>{
+					if(optionsArr.eq(v).val() == resData[k]){
+						optionsArr.eq(v).attr("selected","selected");
+					}
+				})
+			}
+		}
+      }
+    }
+
+    $("#submit").click(()=>{
+      let postData = {ID:getSearchString("id", search)};
+      $("input").map((index,item)=>{
+        postData[item.id] = item.value;
+      })
+	  $("select").map((index,item)=>{
+		  postData[item.id] = item.value;
+	  })
+	  
+      $.ajax({
+        url: "http://127.0.0.1:5000/emit?func=update",
+        data: postData,
+        success(res){
+          alert("数据上传成功");
+          if(confirm("数据上传成功，是否返回查询界面")){
+            window.location.href="index.html";//返回上页
+          }else{
+            location.reload();//页面重载
+          }
+        },
+        error(err){
+          alert("数据上传失败,请稍后再试");
+        }
+      })
+    })
+  })
+</script>
+
+</html>

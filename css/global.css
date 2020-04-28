@@ -1,0 +1,79 @@
+*{ margin: 0; padding：0;}
+
+body,div,ul,ol,dl,dt,dd,li,dl,h1,h2,h3,h4{margin:0;padding:0;font-style:normal;}
+
+ol,ul,li{list-style:none;}
+
+img{border:0;vertical-align:middle;}
+
+body{color:#000000;background:#FFF;text-align:center;}
+
+.clear{clear:both;height:1px;width:100%;overflow:hidden;margin-top:-1px;}
+
+a{color:#000000;text-decoration:none;}
+
+a:hover{color:#BA2636;text-decoration:underline;}
+
+@font-face {
+  font-family: "alida";
+  src:url('./font1561/alida.ttf');
+}
+
+div,h1,h2,h3,h4,h5,span,a,p,label,input,textarea,select,option,ul,ol,li,button{ font-family: "alida"}
+.sm_button {
+    display: inline-block;
+    color: #fff;
+    background-color: #409eff;
+    border-color: #409eff;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid #dcdfe6;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+input[type=text],input[type=password]{
+  -webkit-appearance: none;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 4px;
+  border: 1px solid #dcdfe6;
+  box-sizing: border-box;
+  color: #606266;
+  display: inline-block;
+  font-size: inherit;
+  height: 40px;
+  line-height: 40px;
+  outline: none;
+  padding: 0 15px;
+  transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+  width: 80%;
+}
+
+/* Border styles */
+.table thead th, .table tr td,tr,thead{
+  border-top: 1px solid #a8bfde;
+}
+.table {
+  border-bottom: 1px solid #a8bfde;
+}
+
+/* Padding and font style */
+.table td, .table th {
+  padding: 10px;
+  font-size: 12px;
+  font-family: Verdana;
+  color: #a8bfde;
+}
+
+/* Alternating background colors */
+.table tr:nth-child(even) {
+background: #d3dfed;
+}
+.table tr:nth-child(odd) {
+background: #FFF;
+}
